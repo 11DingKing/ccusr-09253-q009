@@ -1,5 +1,10 @@
 """服务端业务模块。"""
 from __future__ import annotations
+import os
+
+# 测试中关闭常驻后台 worker，超时任务通过 run_due_timeouts 显式驱动。
+os.environ.setdefault("SETTLEMENT_WORKER_ENABLED", "0")
+
 from collections.abc import Iterator
 import pytest
 from fastapi.testclient import TestClient
